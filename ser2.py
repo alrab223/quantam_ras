@@ -12,7 +12,7 @@ pi = pigpio.pi()
 pi.set_mode(servo1, pigpio.OUTPUT)
 pi.set_mode(servo2, pigpio.OUTPUT)
 pi.set_mode(servo3, pigpio.OUTPUT)
-time.sleep(15)
+time.sleep(30)
 while True:
   pi.set_servo_pulsewidth(servo1, 1600)
   pi.set_servo_pulsewidth(servo2, 1500)
