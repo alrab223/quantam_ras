@@ -1,7 +1,7 @@
 from socket import socket, AF_INET, SOCK_DGRAM
 import numpy as np
 import cv2
-HOST = '192.168.0.21'   
+HOST = '192.168.0.22'   
 PORT = 8000
 
 # ソケットを用意
