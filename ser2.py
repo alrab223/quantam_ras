@@ -1,38 +1,41 @@
 import pigpio
 import time
 
+class Servo():
 
-servo2 = 18
-servo1 = 14
-servo3=23
-pi = pigpio.pi()
-
-
-
-pi.set_mode(servo1, pigpio.OUTPUT)
-pi.set_mode(servo2, pigpio.OUTPUT)
-pi.set_mode(servo3, pigpio.OUTPUT)
-time.sleep(30)
-while True:
-  pi.set_servo_pulsewidth(servo1, 1600)
-  pi.set_servo_pulsewidth(servo2, 1500)
-  pi.set_servo_pulsewidth(servo3, 1400)
-  time.sleep(2)
-
-  pi.set_servo_pulsewidth(servo1, 1600)
-  pi.set_servo_pulsewidth(servo2, 1300)
-  pi.set_servo_pulsewidth(servo3, 1600)
-  time.sleep(2)
-
-  pi.set_servo_pulsewidth(servo1, 1600)
-  pi.set_servo_pulsewidth(servo2, 1500)
-  pi.set_servo_pulsewidth(servo3, 1400)
-  time.sleep(2)
-
-  pi.set_servo_pulsewidth(servo1, 1500)
-  pi.set_servo_pulsewidth(servo2, 1500)
-  pi.set_servo_pulsewidth(servo3, 1500)
-  time.sleep(2)
-
-
-pi.stop()
+   def __init__(self):
+      self.servo1 = 14#SG90HV
+      self.servo2 = 18
+      self.servo3=23
+      self.pi = pigpio.pi()
+      self.servo1_pwm = 1500
+      self.servo2_pwm = 1500
+      self.servo3_pwm=1500
+   
+   def go_ahed(self):
+      self.pi.set_servo_pulsewidth(self.servo1, 1800)
+      self.pi.set_servo_pulsewidth(self.servo2, 1400)
+      self.pi.set_servo_pulsewidth(self.servo3, 1400)
+   
+   def go_back(self):
+      self.pi.set_servo_pulsewidth(self.servo1, 1200)
+      self.pi.set_servo_pulsewidth(self.servo2, 1600)
+      self.pi.set_servo_pulsewidth(self.servo3, 1600)
+   
+   def go_right(self):
+      self.pi.set_servo_pulsewidth(self.servo1, 1700)
+      self.pi.set_servo_pulsewidth(self.servo2, 1400)
+      self.pi.set_servo_pulsewidth(self.servo3, 1400)
+ 
+   def main(self):
+      self.pi.set_mode(self.servo1, pigpio.OUTPUT)
+      self.pi.set_mode(self.servo2, pigpio.OUTPUT)
+      self.pi.set_mode(self.servo3, pigpio.OUTPUT)
+      while True:
+         self.go_ahed()
+         time.sleep(3)
+         self.go_back()
+         time.sleep(3)    
+      self.pi.stop()
+servo = Servo()
+servo.main()
