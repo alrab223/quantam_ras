@@ -1,6 +1,7 @@
 from socket import socket, AF_INET, SOCK_DGRAM
 import numpy as np
 import cv2
+import datetime
 SCALED_IMG_SIZE=512
 class SocketServer():
    
@@ -15,6 +16,8 @@ class SocketServer():
    def send_message(self, udp):
       while True:
          msg, address = udp.recvfrom(self.buffer)
+         now = datetime.datetime.now()
+         print(now)
          img_array = np.frombuffer(msg, dtype=np.uint8)
          img_from_text = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
          frame=cv2.resize(img_from_text, (self.SCALED_IMG_SIZE, self.SCALED_IMG_SIZE), interpolation=cv2.INTER_LANCZOS4)

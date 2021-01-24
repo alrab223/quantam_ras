@@ -1,7 +1,7 @@
 from socket import socket, AF_INET, SOCK_DGRAM
 import numpy as np
 import cv2
-import time
+import datetime
 SCALED_IMG_SIZE=512
 class SocketServer():
    
@@ -16,9 +16,8 @@ class SocketServer():
    def send_message(self, udp):
       while True:
          msg, address = udp.recvfrom(self.buffer)
-         now="%.6f" % time.time()
-         print(str(float(now) - float(msg)))
-         
+         now = datetime.datetime.now()
+         print(now)
       udp.close()
 
    def socket_server_up(self):

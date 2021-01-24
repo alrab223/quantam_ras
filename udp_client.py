@@ -2,6 +2,8 @@ from socket import socket, AF_INET, SOCK_DGRAM
 import cv2
 import numpy as np
 import base64
+import datetime
+import time
 PORT = 8000
 ADDRESS = "192.168.0.21" # 自分に送信
 
@@ -19,7 +21,8 @@ while True:
     _, buffer = cv2.imencode('.jpg', frame2)
     img_as_text = base64.b64encode(buffer).decode('utf-8')
     img_binary = base64.b64decode(img_as_text.encode('utf-8'))
-    print(frame2.shape)
-    s.sendto(img_binary,(ADDRESS,PORT))
+    print(datetime.datetime.now)
+    s.sendto(img_binary, (ADDRESS, PORT))
+    time.sleep(3)
 
 s.close()
