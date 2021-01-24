@@ -21,7 +21,7 @@ while True:
     _, buffer = cv2.imencode('.jpg', frame2)
     img_as_text = base64.b64encode(buffer).decode('utf-8')
     img_binary = base64.b64decode(img_as_text.encode('utf-8'))
-    print(datetime.datetime.now)
+    print(datetime.datetime.now())
     s.sendto(img_binary, (ADDRESS, PORT))
     time.sleep(3)
 
