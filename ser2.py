@@ -4,9 +4,9 @@ import time
 class Servo():
 
    def __init__(self):
-      self.servo1 = 14#SG90HV
-      self.servo2 = 18
-      self.servo3=23
+      self.servo1 = 2#SG90HV
+      self.servo2 = 20
+      self.servo3=26
       self.pi = pigpio.pi()
       self.servo1_pwm = 1500
       self.servo2_pwm = 1500
