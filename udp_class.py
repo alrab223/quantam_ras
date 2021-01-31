@@ -44,6 +44,7 @@ class SocketServer():
    def socket_server_up(self):
       udp = socket(AF_INET, SOCK_DGRAM)
       udp.bind((self.host, self.port))
+      udp.settimeout(5)
       print(udp)
       self.send_message(udp)
       
