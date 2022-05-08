@@ -12,8 +12,8 @@ from matplotlib import pyplot as plt
 class SocketServer():
 
    def __init__(self):
-      self.host = '192.168.0.14'
-      self.send_host = '192.168.0.28'
+      self.host = ''
+      self.send_host = ''
       self.port = 8000
       self.buffer = 1024
       self.SCALED_IMG_SIZEX = 520
